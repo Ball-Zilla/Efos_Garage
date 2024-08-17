@@ -1,7 +1,7 @@
 import Template from "./template/Template";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";  // Assuming you have these components
+import Home from "./pages/Home";  // Assuming you have these components
 // import Products from "./components/Products";
 // import Cart from "./components/Cart";
 // import Checkout from "./components/Checkout";
