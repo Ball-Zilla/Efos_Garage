@@ -3,12 +3,8 @@ module.exports = {
   content: ["./src/**/*.{html,js}", "./public/**/*.{html,js}"],
   theme: {
     extend: {
-      base: {
-        'font-family': 'Inter, sans-serif',
-      },
-      krona: {
-        'font-family': 'Krona One, sans-serif',
-      },
+      sans: ['Poppins', 'Helvetica', 'Arial', 'sans-serif'],
+      poppins: ['Poppins', 'Helvetica', 'Arial', 'sans-serif'],
     },
   },
   plugins: [],

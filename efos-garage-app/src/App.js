@@ -1,9 +1,21 @@
 import Template from "./template/Template";
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";  // Assuming you have these components
+// import Products from "./components/Products";
+// import Cart from "./components/Cart";
+// import Checkout from "./components/Checkout";
 
 function App() {
   return (
-      <Template /> 
+    <Template>
+      <Routes>
+        {/* <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} /> */}
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Template>
   );
 }
 

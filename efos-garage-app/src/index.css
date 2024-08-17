@@ -4,5 +4,5 @@
 
 /* font-family: 'Poppins', krona; */
 body {
-  @apply font-base
+ font-family: "Krona One", sans-serif;
 }
