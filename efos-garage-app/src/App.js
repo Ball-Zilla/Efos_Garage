@@ -1,8 +1,9 @@
-
+import Template from "./template/Template";
+import React from "react";
 
 function App() {
   return (
-      <p> Main</p>
+      <Template /> 
   );
 }
 
