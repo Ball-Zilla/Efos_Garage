@@ -1,0 +1,90 @@
+[
+  {
+      "title": "about",
+      "links": [
+          {
+              "name": "About Efo's Garage",
+              "path": "/about"
+          },
+          {
+              "name": "Careers",
+              "path": "/"
+          },
+          {
+              "name": "Social Media",
+              "path": "/"
+          },
+          {
+              "name": "Affiliates",
+              "path": "/"
+          },
+          {
+              "name": "Makes",
+              "path": "/"
+          },
+          {
+              "name": "Models",
+              "path": "/"
+          },
+          {
+              "name": "Global Supplers",
+              "path": "/"
+          }
+      ]
+  },
+  {
+      "title": "New Cars",
+      "links": [
+          {
+              "name": "Luxury",
+              "path": "/"
+          },
+          {
+              "name": "SUVs",
+              "path": "/"
+          },
+          {
+              "name": "Saloon",
+              "path": "/"
+          }
+      ]
+  },
+  {
+      "title": "Used Cars",
+      "links": [
+          {
+              "name": "Luxury",
+              "path": "/"
+          },
+          {
+              "name": "SUVs",
+              "path": "/"
+          },
+          {
+              "name": "Saloon",
+              "path": "/"
+          },
+          {
+              "name": "Sedan",
+              "path": "/"
+          }
+      ]
+  },
+  {
+      "title": "Electric Cars",
+      "links": [
+          {
+              "name": "Luxury",
+              "path": "/"
+          },
+          {
+              "name": "SUVs",
+              "path": "/"
+          },
+          {
+              "name": "Bikes",
+              "path": "/"
+          }
+      ]
+  }
+]
