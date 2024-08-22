@@ -37,13 +37,15 @@ class User(db.Model, UserMixin):
 
 class Cars(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    product_name = db.Column(db.String(100), nullable=False)
+    make = db.Column(db.String(50), nullable=False)
+    model = db.Column(db.String(50), nullable=False)
+    year = db.Column(db.Integer, nullable=False)
     current_price = db.Column(db.Float, nullable=False)
     previous_price = db.Column(db.Float, nullable=False)
-    in_stock = db.Column(db.Integer, nullable=False)
-    product_picture = db.Column(db.String(1000), nullable=False)
-    flash_sale = db.Column(db.Boolean, default=False)
-    date_added = db.Column(db.DateTime, default=datetime.utcnow)
+    in_stock = db.Column(db.Integer, default=True)
+    product_image = db.Column(db.String(1500), nullable=False)
+    discount_sale = db.Column(db.Boolean, default=False)
+    date_created = db.Column(db.DateTime, default=datetime.now)
 
     cart_items = db.relationship('Cart', backref='car', lazy=True)  # cart_items = db.relationship('Cart', backref=db.backref('product', lazy=True))
     orders = db.relationship('Orders', backref='car', lazy=True)
@@ -72,9 +74,9 @@ class Cart(db.Model):
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
-    price = db.Column(db.Float, nullable=False)
-    status = db.Column(db.String(100), nullable=False)
-    payment_id = db.Column(db.String(1000), nullable=False)
+    total_price = db.Column(db.Float, nullable=False)
+    status = db.Column(db.String(150), nullable=False)
+    payment_id = db.Column(db.String(150), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable  = False)
     car_id = db.Column(db.Integer, db.ForeignKey('cars.id'), nullable=False)
