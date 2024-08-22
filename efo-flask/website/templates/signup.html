@@ -1,0 +1,88 @@
+{% extends 'forms.html' %}
+
+{% block title %} SignUp {% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h3>Sign Up</h3>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group mb-3">
+              <label for="username">Username</label>
+              {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group mb-3">
+              <label for="email">Email</label>
+              {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group mb-3">
+              <label for="password">Password</label>
+              {{ form.password1(class="form-control") }}
+            </div>
+            <div class="form-group mb-3">
+              <label for="confirm_password">Confirm Password</label>
+              {{ form.password2(class="form-control") }}
+            </div>
+            <div class="form-group-1 mb-3">
+              {{ form.submit() }}
+            </div>
+            <div class="form-group-1 mb-3">
+              <a href="/auth/login">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Errors:</strong>
+    <ul>
+      {% for error in errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
+  </div>
+  {% endif %}
+
+</div>
+
+<!-- Sign Up section -->
+<!-- <section class="base" id="base-signup">
+  <div class="base-content">
+      <div class="form">
+          <h3>
+              Create an account <br> to shop
+          </h3>
+          
+          <hr class="first">
+          <form method="POST">
+              {{ form.hidden_tag() }}
+
+              <div class="email"><h4>Email Address</h4>{{ form.email }} <hr> </div>
+              <div class="name"><h4>User Name</h4>{{ form.username }} <hr></div>
+              <div class="password"><h4>Password</h4>{{ form.password1 }} <hr></div>
+              <div class="password"><h4>Confirm Passowrd</h4>{{ form.password2 }} <hr></div>
+
+              <div class="buttons">
+                  <a href="/login"> Login</a>
+                  {{ form.submit() }}
+              </div>
+
+
+          </form>
+      </div>
+  </div>
+</section> -->
+  
+{% endblock %}  

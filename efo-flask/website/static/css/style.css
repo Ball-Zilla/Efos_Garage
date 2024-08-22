@@ -1,0 +1,58 @@
+.d-flex .btn{
+  background: rgb(133, 132, 237);
+  border: 2px solid rgb(133, 132, 237);
+  border-radius: 8px;
+  color: #fff;
+}
+.d-flex .btn:hover{
+  background: rgb(32, 31, 83);
+  border: 2px solid rgb(19, 18, 81);
+}
+
+#right1 :hover{
+  color: blue;
+  transition: 300ms;
+}
+
+.row .right2 {
+  margin-left: -10px;
+  height: 180px;
+  width: 180px;
+  border-radius: 10px;
+}
+
+.container .row .col .row .col a {
+  background-color: blue;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+
+}
+
+.container .row .col .row .col a :hover {
+  background-color: rgb(133, 132, 237);
+}
+#column :hover{
+  transform: scale(0.9);
+  transition: 450ms;
+  border-radius: 10px;
+}
+
+#items :hover {
+  color: rgb(133, 132, 237);
+  transition: 200ms;
+}
+
+.explore {
+  font-family: "krona one";
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.explore :hover {
+  color: rgb(133, 132, 237);
+  transition: 200ms;
+}
