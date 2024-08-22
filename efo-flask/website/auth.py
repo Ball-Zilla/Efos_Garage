@@ -68,9 +68,9 @@ def sign_up():
     return render_template("signup.html", form=form)
 
 
-@auth.route('/logout', methods=['GET', 'POST'])  # Create a route decorator for the /logout URL
-@login_required
-def logout():
-    logout_user()
-    return redirect('/')
+# @auth.route('/logout', methods=['GET', 'POST'])  # Create a route decorator for the /logout URL
+# @login_required
+# def logout():
+#     logout_user()
+#     return redirect('/')
 
