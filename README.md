@@ -4,4 +4,4 @@ Then
 + `cd efo-flask`
 + `source venv/bin/activate`
 + `pip install -r requirements.txt`
-+ `python3 main.py` or `flask run`
++ `python3 app.py` or `flask run`

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, flash, redirect  # Import the Blueprint class 
-from .forms import signup_form, login_form  # Import the signup_form and login_form classes from the forms.py file
+from .forms import signup_form, login_form, changePassword  # Import the signup_form and login_form classes from the forms.py file
 from .models import User  # Import the User class from the models.py file
 from . import db
 from flask_login import login_user, login_required, logout_user
@@ -51,26 +51,57 @@ def sign_up():
                 db.session.add(new_user)
                 db.session.commit()
                 flash('User created successfully. You can Login now', 'success')
-                return redirect(('/auth/login'))
+                return redirect(('/login'))
             except Exception as e:
                 print(e)
                 flash('User already exists')
-                return redirect(('/auth/sign-up'))
+                return redirect(('/sign-up'))
             
             form.email.data = ''
             form.username.data = ''
             form.password1.data = ''
             form.password2.data = ''
 
-        return redirect(('/auth/sign-up'))
+        return redirect(('/sign-up'))
 
 
     return render_template("signup.html", form=form)
 
 
-# @auth.route('/logout', methods=['GET', 'POST'])  # Create a route decorator for the /logout URL
-# @login_required
-# def logout():
-#     logout_user()
-#     return redirect('/')
+@auth.route('/logout', methods=['GET', 'POST'])  # Create a route decorator for the /logout URL
+@login_required
+def logout():
+    logout_user()
+    return redirect('/')
 
+
+@auth.route('/profile/<int:user_id>')  # Create a route decorator for the /profile URL
+@login_required
+def profile(user_id):
+    user = User.query.get(user_id)
+    return render_template('profile.html', user=user)
+
+
+@auth.route('/change-password/<int:user_id>', methods=['GET', 'POST'])  # Create a route decorator for the /change-password URL
+@login_required
+def change_password(user_id):
+    form = changePassword()
+    user_id = User.query.get(user_id)
+    if form.validate_on_submit():
+        old_password = form.old_password.data
+        new_password = form.new_password1.data
+        new_password2 = form.new_password2.data
+
+        if user_id.check_password(old_password):
+            if new_password == new_password2:
+              user_id.password = new_password2
+              db.session.commit()
+              flash('Password changed successfully')
+              return redirect('/profile')
+            else:
+              flash('Passwords do not match')
+              return redirect('/change-password')
+        else:
+            flash('Incorrect Password')
+            return redirect('/change-password')
+    return render_template('changePassword.html', form=form)

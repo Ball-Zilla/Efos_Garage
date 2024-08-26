@@ -60,12 +60,16 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="profileDropdown">
 
+            {% if current_user.is_authenticated %}
+            <li><a class="dropdown-item" href="/profile/{{ current_user.id }} ">Profile</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
+            <li><a class="dropdown-item" href="/logout">Logout <i class="fa-solid fa-right-to-bracket"></i></a></li>
 
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="/auth/logout">SignUp<i class="fa-solid fa-right-from-bracket"></i></a></li>
-
-            <li><a class="dropdown-item" href="/auth/login">Login <i class="fa-solid fa-right-to-bracket"></i></a></li>
+            {% else %}
+            <li><a class="dropdown-item" href="/login">Login <i class="fa-solid fa-right-to-bracket"></i></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/sign-up">Sign Up <i class="fa-solid fa-right-to-bracket"></i></a></li>
+            {% endif %}
           </ul>
       </ul>
     </div>
