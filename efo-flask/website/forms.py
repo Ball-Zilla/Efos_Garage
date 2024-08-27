@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, EmailField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, EmailField, FileField, IntegerField, DecimalField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
+from flask_wtf.file import FileAllowed
 
 
 
@@ -17,14 +18,22 @@ class login_form(FlaskForm):
     submit = SubmitField('Login')
 
 
-class add_car(FlaskForm):
-    make = StringField('Make', validators=[DataRequired()])
-    model = StringField('Model', validators=[DataRequired()])
-    year = StringField('Year', validators=[DataRequired()])
-    current_price = StringField('Current Price', validators=[DataRequired()])
-    previous_price = StringField('Previous Price', validators=[DataRequired()])
+class add_car_form(FlaskForm):
+    name = StringField('Name of Car', validators=[DataRequired()])
+    exterior_color = StringField('Exterior Color', validators=[DataRequired()])
+    interior_color = StringField('Interior Color', validators=[DataRequired()])
+    engine = StringField('Engine', validators=[DataRequired()])
+    transmission = StringField('Transmission Type', validators=[DataRequired()])
+    fuel_type = StringField('Fuel Type', validators=[DataRequired()])
+    vin_number = IntegerField('VIN Number', validators=[DataRequired()])
+    mileage = IntegerField('Mileage', validators=[DataRequired()])
+    # make = StringField('Make', validators=[DataRequired()])
+    # model = StringField('Model', validators=[DataRequired()])
+    year = IntegerField('Year', validators=[DataRequired()])
+    current_price = DecimalField('Current Price', validators=[DataRequired()])
+    previous_price = DecimalField('Previous Price', validators=[DataRequired()])
     in_stock = BooleanField('In Stock')
-    product_image = StringField('Product Image', validators=[DataRequired()])
+    product_image = FileField('Product Picture', validators=[DataRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
     discount_sale = BooleanField('Discount Sale')
     submit = SubmitField('Add Car')
 

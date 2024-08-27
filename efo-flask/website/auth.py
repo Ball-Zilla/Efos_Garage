@@ -79,6 +79,7 @@ def logout():
 @login_required
 def profile(user_id):
     user = User.query.get(user_id)
+    print('User ID:', user.id)
     return render_template('profile.html', user=user)
 
 
@@ -86,22 +87,21 @@ def profile(user_id):
 @login_required
 def change_password(user_id):
     form = changePassword()
-    user_id = User.query.get(user_id)
+    user = User.query.get(user_id)
     if form.validate_on_submit():
         old_password = form.old_password.data
-        new_password = form.new_password1.data
+        new_password1 = form.new_password1.data
         new_password2 = form.new_password2.data
 
-        if user_id.check_password(old_password):
-            if new_password == new_password2:
-              user_id.password = new_password2
+        if user.check_password(old_password):
+            if new_password1 == new_password2:
+              user.password = new_password2
               db.session.commit()
               flash('Password changed successfully')
-              return redirect('/profile')
+              return redirect(f'/profile/{ user.id }')
             else:
               flash('Passwords do not match')
-              return redirect('/change-password')
+
         else:
             flash('Incorrect Password')
-            return redirect('/change-password')
     return render_template('changePassword.html', form=form)

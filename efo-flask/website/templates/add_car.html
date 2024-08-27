@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %} Add New Car {% endblock %}
+
+
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+	{{ form.hidden_tag() }}
+
+	<table class="table table-light table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Name of Car</th>
+				<th scope="col">Exterior Colour</th>
+				<th scope="col">Interior Colour</th>
+				<th scope="col">Engine</th>
+				<th scope="col">Mileage</th>
+				<th scope="col">Fuel Type</th>
+				<th scope="col">Transmission Type</th>
+        <th scope="col">Year</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ form.name }}</td>
+				<td>{{ form.exterior_color }}</td>
+				<td>{{ form.interior_color }}</td>
+				<td>{{ form.engine }}</td>
+				<td>{{ form.mileage }}</td>
+				<td>{{ form.fuel_type }}</td>
+				<td>{{ form.transmission }}</td>
+        <td>{{ form.year }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-light table-hover">
+		<thead>
+			<tr>
+				<th scope="col">VIN Number</th>
+				<!-- <th scope="col">Make</th>
+				<th scope="col">Model</th> -->
+				<th scope="col">Current Price</th>
+				<th scope="col">Previous Price</th>
+				<th scope="col">In Stock</th>
+				<th scope="col">Product Image</th>
+				<th scope="col">Discount</th>
+				<th scope="col">Add</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ form.vin_number }}</td>
+				<!-- <td>{{ form.make }}</td>
+				<td>{{ form.model }}</td> -->
+				<td>{{ form.current_price }}</td>
+				<td>{{ form.previous_price }}</td>
+				<td>{{ form.in_stock }}</td>
+				<td>{{ form.product_image }}</td>
+				<td>{{ form.discount_sale }}</td>
+				<td>{{ form.submit }}</td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+
+
+
+{% endblock %}
+

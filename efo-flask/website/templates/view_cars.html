@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} View Cars {% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+    {% if items | length < 1 %}
+        <h3 class="text-center" style="color: rgb(12, 1, 1);">No Cars Available</h3>
+    {% else %}
+        <div class="row">
+            {% for item in items %}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                    <img src="{{ item.product_image }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">
+                          <strong>Exterior Color:</strong> {{ item.exterior_color if item.exterior_color else 'N/A' }}<br>
+                          <strong>Interior Color:</strong> {{ item.interior_color if item.interior_color else 'N/A' }}<br>
+                          <strong>Engine:</strong> {{ item.engine if item.engine else 'N/A' }}<br>
+                          <strong>Mileage:</strong> {{ item.mileage if item.mileage else 'N/A' }}<br>
+                          <strong>Fuel Type:</strong> {{ item.fuel_type if item.fuel_type else 'N/A' }}<br>
+                          <strong>Transmission:</strong> {{ item.transmission if item.transmission else 'N/A' }}<br>
+                          <strong>Year:</strong> {{ item.year }}<br>
+                          <strong>VIN:</strong> {{ item.vin_number if item.vin_number else 'N/A' }}<br>
+                          <strong>Price:</strong> ${{ item.current_price }} <del>${{ item.previous_price }}</del><br>
+                          <strong>In Stock:</strong> {{ item.in_stock if item.in_stock else 'No' }}<br>
+                          <strong>Discount:</strong> {{ item.discount_sale if item.discount_sale else 'None' }}
+                      </p>
+                        <a href="/edit-car/{{ item.id }}" class="btn btn-primary">Update</a>
+                        <a href="/delete-car/{{ item.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
