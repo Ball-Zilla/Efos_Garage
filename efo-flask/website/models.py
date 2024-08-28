@@ -44,7 +44,7 @@ class Cars(db.Model):
     current_price = db.Column(db.Float, nullable=True)
     previous_price = db.Column(db.Float, nullable=True)
     in_stock = db.Column(db.Integer, default=True)
-    product_image = db.Column(db.String(1500), nullable=False)
+    product_image = db.Column(db.String(1500), nullable=True)
     discount_sale = db.Column(db.Boolean, default=True)
     date_created = db.Column(db.DateTime, default=datetime.now)
     exterior_color = db.Column(db.String(150), nullable=True)

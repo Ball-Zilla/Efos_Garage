@@ -34,27 +34,44 @@
     <h2 class="text-center">Welcome to Efo's Garage</h2>
   </div>
 <div class="text-center">
-    <button class="btn btn-outline-primary text-center">Browse Cars</button>
+
+  <a href="/view-cars"  class="btn btn-outline-primary text-center">Browse Cars</a>
 </div>
 <div class="row p-2">
   <div class="col-md-12">
     <h2 class="text-center">Top Cars</h2>
   </div>
+  
 <div class="container">
   <div class="row">
+    {% for car in cars %}
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <img src="{{ url_for('static', filename='images/img_4.jpg') }}" class="card-img-top" alt="...">
+        <img src="{{ car.product_image }}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title text-center">Chevrolet Corvette Stingray 3LT Coupe</h5>  
-          <p class="card-text">The Chevrolet Corvette is an iconic American sports car renowned for its bold design, exhilarating performance, and cutting-edge technology. Equipped with a powerful V8 engine, the Corvette delivers heart-pounding acceleration and agile handling, making it a true driver's car.</p>
+          <h5 class="card-title text-center">{{ car.name }}</h5>  
+          <p class="card-text">
+            <strong>Exterior Color:</strong> {{ car.exterior_color if car.exterior_color else 'N/A' }}<br>
+            <strong>Interior Color:</strong> {{ car.interior_color if car.interior_color else 'N/A' }}<br>
+            <strong>Engine:</strong> {{ car.engine if car.engine else 'N/A' }}<br>
+            <!-- <strong>Mileage:</strong> {{ car.mileage if car.mileage else 'N/A' }}<br>
+            <strong>Fuel Type:</strong> {{ car.fuel_type if car.fuel_type else 'N/A' }}<br>
+            <strong>Transmission:</strong> {{ car.transmission if car.transmission else 'N/A' }}<br>
+            <strong>Year:</strong> {{ car.year }}<br>
+            <strong>VIN:</strong> {{ car.vin_number if car.vin_number else 'N/A' }}<br> -->
+            <strong>Price:</strong> ${{ car.current_price }} <del>${{ car.previous_price }}</del><br>
+            <strong>In Stock:</strong> {{ car.in_stock if car.in_stock else 'No' }}<br>
+            <!-- <strong>Discount:</strong> {{ car.discount_sale if car.discount_sale else 'None' }} -->
+        </p>
           <div class="text-center">
-            <a href="#" class="btn btn-primary ">Details</a>
+            <a href="/car/{{ car.id }}" class="btn btn-primary ">Details</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+
+    {% endfor %}
+    <!-- <div class="col-md-4">
       <div class="card" style="width: 18rem;">
         <img src="{{ url_for('static', filename='images/img_5.jpg') }}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -78,8 +95,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
+</div>
+</div>
 </div>
   
   {% endblock %}

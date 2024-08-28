@@ -5,31 +5,33 @@
 {% block content %}
 
 <div class="container my-5">
-    {% if items | length < 1 %}
+    {% if cars | length < 1 %}
         <h3 class="text-center" style="color: rgb(12, 1, 1);">No Cars Available</h3>
     {% else %}
         <div class="row">
-            {% for item in items %}
+            {% for car in cars %}
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card">
-                    <img src="{{ item.product_image }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                    <img src="{{ car.product_image }}" class="card-img-top" alt="{{ car.name }}" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
+                        <h5 class="card-title">{{ car.name }}</h5>
                         <p class="card-text">
-                          <strong>Exterior Color:</strong> {{ item.exterior_color if item.exterior_color else 'N/A' }}<br>
-                          <strong>Interior Color:</strong> {{ item.interior_color if item.interior_color else 'N/A' }}<br>
-                          <strong>Engine:</strong> {{ item.engine if item.engine else 'N/A' }}<br>
-                          <strong>Mileage:</strong> {{ item.mileage if item.mileage else 'N/A' }}<br>
-                          <strong>Fuel Type:</strong> {{ item.fuel_type if item.fuel_type else 'N/A' }}<br>
-                          <strong>Transmission:</strong> {{ item.transmission if item.transmission else 'N/A' }}<br>
-                          <strong>Year:</strong> {{ item.year }}<br>
-                          <strong>VIN:</strong> {{ item.vin_number if item.vin_number else 'N/A' }}<br>
-                          <strong>Price:</strong> ${{ item.current_price }} <del>${{ item.previous_price }}</del><br>
-                          <strong>In Stock:</strong> {{ item.in_stock if item.in_stock else 'No' }}<br>
-                          <strong>Discount:</strong> {{ item.discount_sale if item.discount_sale else 'None' }}
+                          <strong>Exterior Color:</strong> {{ car.exterior_color if car.exterior_color else 'N/A' }}<br>
+                          <strong>Interior Color:</strong> {{ car.interior_color if car.interior_color else 'N/A' }}<br>
+                          <strong>Engine:</strong> {{ car.engine if car.engine else 'N/A' }}<br>
+                          <strong>Mileage:</strong> {{ car.mileage if car.mileage else 'N/A' }}<br>
+                          <strong>Fuel Type:</strong> {{ car.fuel_type if car.fuel_type else 'N/A' }}<br>
+                          <strong>Transmission:</strong> {{ car.transmission if car.transmission else 'N/A' }}<br>
+                          <strong>Year:</strong> {{ car.year }}<br>
+                          <strong>VIN:</strong> {{ car.vin_number if car.vin_number else 'N/A' }}<br>
+                          <strong>Price:</strong> ${{ car.current_price }} <del>${{ car.previous_price }}</del><br>
+                          <strong>In Stock:</strong> {{ car.in_stock if car.in_stock else 'No' }}<br>
+                          <strong>Discount:</strong> {{ car.discount_sale if car.discount_sale else 'None' }}
                       </p>
-                        <a href="/edit-car/{{ item.id }}" class="btn btn-primary">Update</a>
-                        <a href="/delete-car/{{ item.id }}" class="btn btn-danger">Delete</a>
+                        <a href="/edit-car/{{ car.id }}" class="btn btn-primary">Update</a>
+                        <form action="/delete-car/{{ car.id }}" method="POST">
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
                     </div>
                 </div>
             </div>
