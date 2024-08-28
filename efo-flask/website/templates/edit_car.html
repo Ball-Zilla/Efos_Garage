@@ -8,6 +8,14 @@
 <form action="" method="POST" enctype="multipart/form-data">
 	{{ form.hidden_tag() }}
 
+	{% for field in form %}
+	    {% if field.errors %}
+	        <div class="alert alert-danger">
+	            {{ field.label.text }}: {{ field.errors[0] }}
+	        </div>
+	    {% endif %}
+	{% endfor %}
+
 	<table class="table table-light table-hover">
 		<thead>
 			<tr>
@@ -18,19 +26,19 @@
 				<th scope="col">Mileage</th>
 				<th scope="col">Fuel Type</th>
 				<th scope="col">Transmission Type</th>
-        <th scope="col">Year</th>
+				<th scope="col">Year</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>{{ form.name }}</td>
-				<td>{{ form.exterior_color }}</td>
-				<td>{{ form.interior_color }}</td>
-				<td>{{ form.engine }}</td>
-				<td>{{ form.mileage }}</td>
-				<td>{{ form.fuel_type }}</td>
-				<td>{{ form.transmission }}</td>
-        <td>{{ form.year }}</td>
+				<td class="form-group">{{ form.name(class_="form-control") }}</td>
+				<td class="form-group">{{ form.exterior_color(class_="form-control") }}</td>
+				<td class="form-group">{{ form.interior_color(class_="form-control") }}</td>
+				<td class="form-group">{{ form.engine(class_="form-control") }}</td>
+				<td class="form-group">{{ form.mileage(class_="form-control") }}</td>
+				<td class="form-group">{{ form.fuel_type(class_="form-control") }}</td>
+				<td class="form-group">{{ form.transmission(class_="form-control") }}</td>
+				<td class="form-group">{{ form.year(class_="form-control") }}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -39,8 +47,6 @@
 		<thead>
 			<tr>
 				<th scope="col">VIN Number</th>
-				<!-- <th scope="col">Make</th>
-				<th scope="col">Model</th> -->
 				<th scope="col">Current Price</th>
 				<th scope="col">Previous Price</th>
 				<th scope="col">In Stock</th>
@@ -51,21 +57,23 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>{{ form.vin_number }}</td>
-				<!-- <td>{{ form.make }}</td>
-				<td>{{ form.model }}</td> -->
-				<td>{{ form.current_price }}</td>
-				<td>{{ form.previous_price }}</td>
-				<td>{{ form.in_stock }}</td>
-				<td>{{ form.product_image }}</td>
-				<td>{{ form.discount_sale }}</td>
-				<td>{{ form.edit_car }}</td>
+				<td class="form-group">{{ form.vin_number(class_="form-control") }}</td>
+				<td class="form-group">{{ form.current_price(class_="form-control") }}</td>
+				<td class="form-group">{{ form.previous_price(class_="form-control") }}</td>
+				<td class="form-group">{{ form.in_stock(class_="form-control") }}</td>
+				<td class="form-group">
+					{{ form.product_image(class_="form-control") }}
+					{% if car.product_image %}
+					  <img src="{{ car.product_image }}" alt="Car Image" style="height: 50px; width: 50px; border-radius: 2px;">
+					{% endif %}
+				</td>
+				<td>{{ form.discount_sale(class_="form-control") }}</td>
+				<td>
+					<button type="submit" class="btn btn-primary">Update Car</button>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 </form>
 
-
-
 {% endblock %}
-

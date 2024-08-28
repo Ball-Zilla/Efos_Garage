@@ -52,7 +52,7 @@ class Cars(db.Model):
     engine = db.Column(db.String(150), nullable=True)
     transmission = db.Column(db.String(150), nullable=True)
     fuel_type = db.Column(db.String(150), nullable=True)
-    vin_number = db.Column(db.Integer, nullable=True)
+    vin_number = db.Column(db.String(150), nullable=True)
     mileage = db.Column(db.Integer, nullable=True)
     
 

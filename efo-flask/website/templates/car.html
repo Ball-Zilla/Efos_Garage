@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} View Car - {{ car.name }} {% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10 mb-4">
+            <div class="card shadow-lg border-0">
+                <img src="{{ car.product_image }}" class="card-img-top img-fluid" alt="{{ car.name }}" 
+                    style="max-height: 400px; object-fit: cover; border-radius: 5px;">
+                <div class="card-body">
+                    <h2 class="card-title">{{ car.name }}</h2>
+                    <p class="text-muted">Year: {{ car.year }}</p>
+
+                    <p class="card-text">
+                        <strong>Exterior Color:</strong> {{ car.exterior_color if car.exterior_color else 'N/A' }}<br>
+                        <strong>Interior Color:</strong> {{ car.interior_color if car.interior_color else 'N/A' }}<br>
+                        <strong>Engine:</strong> {{ car.engine if car.engine else 'N/A' }}<br>
+                        <strong>Mileage:</strong> {{ car.mileage if car.mileage else 'N/A' }} km<br>
+                        <strong>Fuel Type:</strong> {{ car.fuel_type if car.fuel_type else 'N/A' }}<br>
+                        <strong>Transmission:</strong> {{ car.transmission if car.transmission else 'N/A' }}<br>
+                        <strong>VIN:</strong> {{ car.vin_number if car.vin_number else 'N/A' }}<br>
+                    </p>
+
+                    <p class="h4">
+                        <strong>Price: </strong> ${{ car.current_price }} 
+                        <small class="text-muted"><del>${{ car.previous_price }}</del></small>
+                    </p>
+                    <p>
+                        <strong>In Stock:</strong> {{ car.in_stock if car.in_stock else 'No' }}<br>
+                        <strong>Discount:</strong> {{ car.discount_sale if car.discount_sale else 'None' }}
+                    </p>
+
+                    <a href="/" class="btn btn-primary btn-block my-3">Add to Cart</a>
+                    <form action="/" method="POST">
+                        <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
