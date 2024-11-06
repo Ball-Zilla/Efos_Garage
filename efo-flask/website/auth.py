@@ -23,11 +23,13 @@ def login():
                 flash('Logged in successfully!')
                 login_user(user)
                 return redirect('/')
-            
             else:
                 flash('Incorrect password')
+                print('Incorrect password')
         else:
             flash('User does not exist')
+    # No redirect here either
+
         
     return render_template("login.html", form=form)
     

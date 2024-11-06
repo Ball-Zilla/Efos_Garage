@@ -24,9 +24,15 @@
                 <p>Email: {{ user.email }}</p>
             </div>
         </div>
-          <!-- <div class="form-group">
-              <button type="submit"> </button>
-          </div> -->
+        {% if current_user.id == 1 %}
+          <div class="form-group">
+            <ul class="list-unstyled">
+              <li class="d-grid"><a href="/add-car" class="btn btn-primary">Add cars</a></li>
+              <li class="d-grid"><a href="/view-cars" class="btn btn-primary" style="margin-top: 5px;">View Cars</a></li>
+
+          </ul>
+          </div>
+        {% endif %}
       </form>
     </section>
   </div>
